@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabi Planets - Learn About Our Solar System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="https://gabischool.com/wp-content/uploads/2020/12/GABILOGO.png" alt="Gabi Logo" class="logo">
+            </a>
+            <h1>Gabi Planets</h1>
+        </div>
+        <p class="tagline">Explore Our Solar System</p>
+    </header>
+
+    <nav id="planetNav">
+        <button class="planet-button" data-planet="mercury">Mercury</button>
+        <button class="planet-button" data-planet="venus">Venus</button>
+        <button class="planet-button" data-planet="earth">Earth</button>
+        <button class="planet-button" data-planet="mars">Mars</button>
+        <button class="planet-button" data-planet="jupiter">Jupiter</button>
+    </nav>
+
+    <main>
+        <section id="planetInfo" class="planet-info">
+            <!-- Planet information will be displayed here -->
+            <div class="welcome-message">
+                <h2>Welcome to Gabi Planets!</h2>
+                <p>Click on a planet name above to learn more about it.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created with ❤️ by Gabi School - Teaching the Next Generation of Space Explorers</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
