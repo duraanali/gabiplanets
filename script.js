@@ -58,79 +58,78 @@ const planetData = {
 };
 
 
-const planetInfo = document.querySelector("#planetInfo") // meeshii aan wax galin laheyn
-const planetNav = document.querySelector("#planetNav") // habkaan u badali laheyn planetka
+// Let's build the card displaying the planets
+
+const planetInfo = document.querySelector("#planetInfo")
+const planetNav = document.querySelector("#planetNav")
 
 function displayPlanetInfo(planetName) {
-    // Get planet data
-    const planet = planetData[planetName]
 
-    // Clear existing data
-    planetInfo.innerHTML = '';
+    // Step 1: Give data
+    const currentPlanet = planetData[planetName];
 
-    // Create the planet container div
-    const planetContainer = document.createElement("div")
-    planetContainer.className = "planet-content";
+    // Step 2: Planet-kii hore meesha ka bixi
+    planetInfo.innerHTML = "";
 
-    // create image
+    // Step 3: Samee DIV ugu horeeyo ee wixii soo bandhigi lahaa planet-ka
+    const planetMainDiv = document.createElement("div")
+    planetMainDiv.className = "planet-content"
+
+    // Step 4: Samee sawirka
+
     const planetImage = document.createElement("img")
-    planetImage.src = planet.image;
-    planetImage.alt = planet.name;
+    planetImage.src = currentPlanet.image;
+    planetImage.alt = currentPlanet.name;
     planetImage.className = "planet-image"
 
-    // Info container
-    const planetDetails = document.createElement("div")
-    planetDetails.className = "planet-details"
+    // Step 5: Samee planet details div
 
-    // create h2
+    const planetDetailsDiv = document.createElement("div")
+    planetDetailsDiv.className = "planet-details"
+
+    // Step 6: Samee h2 oo ah planet name
     const planetTitle = document.createElement("h2")
-    planetTitle.textContent = planet.name;
+    planetTitle.textContent = currentPlanet.name;
 
-    // create p
-    const planetParagraph = document.createElement("p")
-    planetParagraph.textContent = planet.description
+    // Step 7: Samee p tag oo ah planet description
+    const planetDesc = document.createElement("p")
+    planetDesc.textContent = currentPlanet.description;
 
-    // create h3, interesting facts title
-    const factsTitle = document.createElement("h3")
-    factsTitle.textContent = "Interesting Facts:";
 
-    // create the ul
-    const factsList = document.createElement("ul")
-    factsList.className = "fact-list"
+    // Step 8: Isku xir wixii aad kor kusoo sameysay adigoo isticmaalaayo append ama appendChild
 
-    planet.facts.forEach((fact) => {
-        const li = document.createElement("li");
-        li.textContent = fact
-        factsList.append(li) // isku xire, wuxuu isku xiray li iyo ul
-    })
+    planetMainDiv.append(planetImage)
+    planetMainDiv.append(planetDetailsDiv)
 
-    // CONNECT ALL THE PARTS
+    planetDetailsDiv.appendChild(planetTitle)
+    planetDetailsDiv.append(planetDesc)
 
-    planetContainer.append(planetImage);
-    planetContainer.append(planetDetails)
-    planetDetails.append(planetTitle)
-    planetDetails.append(planetParagraph)
-    planetDetails.append(factsTitle)
-    planetDetails.append(factsList)
+    // Step 9: Ku xir main div-ka, PlanetInfo div oo ah midka ku jiro HTML-ka
+    planetInfo.append(planetMainDiv)
 
-    planetInfo.append(planetContainer)
+    return planetInfo;
 }
+
+// Step 10: Samee function markii planet menu dhag lasiiyo loo yeeraayo, kaas oo u yeeraayo functionka aan kor ku sameynay siinaayo planet name.
 
 function handlePlanetClick(event) {
-    const button = event.target;
-    if (!button.classList.contains('planet-button')) return;
+    const button = event.target
+    if (!button.classList.contains("planet-button")) return
 
-    // Remove active class from all buttons
-    document.querySelectorAll('.planet-button').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    // Add active class to clicked button
-    button.classList.add('active');
-    
-    // Display planet information
-    const planetKey = button.dataset.planet;
-    displayPlanetInfo(planetKey);
+    // remove active class from all buttons
+    document.querySelectorAll(".planet-button").forEach(btn => {
+        btn.classList.remove("active")
+    })
+
+
+    // add active to the clicked button
+    button.classList.add("active")
+
+    // call the displayPlanetInfo function and give the planet name
+    const planetName = button.dataset.planet
+    displayPlanetInfo(planetName) // invoke function-ka kor ku yaalo, kadib sii magaca planetka
 }
+
+// markii dhag lasiiyo, u yeer functionka handlePlanetClick
 
 planetNav.addEventListener("click", handlePlanetClick)
